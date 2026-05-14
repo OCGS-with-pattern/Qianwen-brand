@@ -73,6 +73,7 @@ export function createBrandCatMotion(Vue, defaults = {}) {
             alt: props.label,
             draggable: "false",
           }),
+          h("span", { class: "sdc-expression" }),
         ]),
       ]);
     },

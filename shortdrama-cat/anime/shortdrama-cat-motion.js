@@ -38,7 +38,7 @@ class ShortdramaCatMotion extends HTMLElement {
   }
 
   restart() {
-    this.shadowRoot.querySelectorAll(".sdc-stage, .sdc-mark").forEach((el) => {
+    this.shadowRoot.querySelectorAll(".sdc-stage, .sdc-mark, .sdc-expression").forEach((el) => {
       el.getAnimations().forEach((animation) => {
         animation.cancel();
         animation.play();
@@ -107,6 +107,7 @@ class ShortdramaCatMotion extends HTMLElement {
       <link rel="stylesheet" href="${CSS_URL.href}">
       <span class="sdc-stage" part="stage">
         <img class="sdc-mark" part="mark" draggable="false">
+        <span class="sdc-expression" part="expression"></span>
       </span>
     `;
   }
