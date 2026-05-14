@@ -8,6 +8,9 @@
 - `svg/` - SVG 包装文件，引用 512 PNG 作为当前 v1 图形源。
 - `anime/shortdrama-cat-motion.css` - 零依赖动画样式。
 - `anime/shortdrama-cat-motion.js` - 零依赖 Web Component：`<shortdrama-cat-motion>`。
+- `js/shortdrama-cat-motion.bundle.js` - 内联 CSS 的 Web Component bundle，适合 OSS/CDN 单脚本引用。
+- `js/shortdrama-cat-assets.js` - 由原 TypeScript 常量/URL helper 转成的 ESM JS。
+- `js/brand-cat-motion-vue.js` - 由原 Vue SFC 转成的 Vue 3 JS 组件工厂。
 - `index.html` - 本地/OSS 预览页。
 
 ## Variants
@@ -30,6 +33,31 @@
 </shortdrama-cat-motion>
 ```
 
+如果希望一个 JS 文件里自带动画 CSS，可直接用 bundle 版：
+
+```html
+<script src="./js/shortdrama-cat-motion.bundle.js"></script>
+
+<shortdrama-cat-motion
+  variant="cat-search"
+  motion="reveal"
+  size="lg">
+</shortdrama-cat-motion>
+```
+
+## Vue 3
+
+```js
+import { h, computed, onMounted } from "vue";
+import { createBrandCatMotion } from "./js/brand-cat-motion-vue.js";
+
+const BrandCatMotion = createBrandCatMotion({ h, computed, onMounted }, {
+  basePath: "https://your-cdn.example.com/shortdrama-cat",
+});
+
+app.component("BrandCatMotion", BrandCatMotion);
+```
+
 ### Attributes
 
 | Attribute | Values | Default |
@@ -46,7 +74,7 @@
 上传整个目录后，可以直接引用：
 
 ```html
-<script src="https://your-cdn.example.com/shortdrama-cat/anime/shortdrama-cat-motion.js"></script>
+<script src="https://your-cdn.example.com/shortdrama-cat/js/shortdrama-cat-motion.bundle.js"></script>
 <shortdrama-cat-motion variant="cat-search" motion="reveal" size="lg"></shortdrama-cat-motion>
 ```
 
