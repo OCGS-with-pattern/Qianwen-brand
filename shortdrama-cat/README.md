@@ -2,6 +2,8 @@
 
 短剧猫品牌图形资产包，可直接作为静态目录发布到 Git 仓库、OSS Bucket 或任意 CDN。
 
+品牌资产是纯静态内容，不依赖后端运行时。若示例页面需要调用业务 API，正式后端以主仓库 `nuclio/` 下的 Go / Nuclio 云函数为准；历史 Node.js 后端已归档到 `deprecated/node-backend/`。
+
 ## Directory
 
 - `png/` - 透明 PNG，包含 `16/32/48/64/128/256/512` 多尺寸。
